@@ -1,0 +1,11 @@
+const express=require('express')
+const dotenv=require('dotenv')
+const connectDB=require('./config/db')
+const studentRoutes=require('./Routes/studentRoutes')
+dotenv.config()
+const app=express()
+const Port=process.env.PORT || 5000
+connectDB()
+app.use(express.json())
+app.use('/apiSt',studentRoutes)
+app.listen(Port)
